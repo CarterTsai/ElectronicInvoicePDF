@@ -52,7 +52,7 @@ namespace pdftest
             DrawWord(gfx, pfcFonts.Families[1], options, page, @"102年05-06月", 23, 0, 70, XStringFormats.TopCenter);
             DrawWord(gfx, pfcFonts.Families[1], options, page, @"AB-11223344", 23, 0, 95, XStringFormats.TopCenter);
             DrawWord(gfx, pfcFonts.Families[1], options, page, @"2013-05-23 11:00:30", 9, 10, 125, XStringFormats.TopLeft);
-            DrawWord(gfx, pfcFonts.Families[1], options, page, @"隨機碼 9999   總計340", 9, 10, 137, XStringFormats.TopLeft);
+            DrawWord(gfx, pfcFonts.Families[1], options, page, @"隨機碼：9999   總計：340,000,000,000", 9, 10, 137, XStringFormats.TopLeft);
             DrawWord(gfx, pfcFonts.Families[1], options, page, @"賣方01234567", 9, 9, 149, XStringFormats.TopLeft);
 
             // 產生Code128
@@ -68,9 +68,9 @@ namespace pdftest
             bw.Options.PureBarcode = true;
             Bitmap code = bw.Write("999999999");
 
-            gfx.DrawImage(code, 3, 165, barCodeW, barCodeH);
+            gfx.DrawImage(code, 5, 165, barCodeW, barCodeH);
 
-            var qrcodeSize = 2.0;
+            var qrcodeSize = 1.6;
             // Left QRCode
             var w = new XUnit();
             w.Centimeter = qrcodeSize;
@@ -84,9 +84,9 @@ namespace pdftest
             h = new XUnit();
             h.Centimeter = qrcodeSize;
             var left = new XUnit();
-            left.Centimeter = 3;
+            left.Centimeter = 3.5;
 
-            gfx.DrawImage(GenerateQRCode("0999999", Color.Black, Color.White), left, 190, w, h);
+            gfx.DrawImage(GenerateQRCode("飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ飯糰加鹽好吃ㄟ", Color.Black, Color.White), left, 190, w, h);
 
             // Save the document...
             const string filename = "HelloWorld.pdf";
